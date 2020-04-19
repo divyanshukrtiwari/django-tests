@@ -11,19 +11,19 @@
 
 <body class="container">
     <div class="jumbotron bg-info text-center text-white">
-        <h2 >Hash Generator</h2>
+        <h2 class="">Hash Generator</h2>
         <p>A Simple Hash Generator</p>
     </div>
-    <div class="card text-center border bg-light">
-        <form action="{% url 'home' %}" class="mt-2" method="POST">
-            <div class="card-title p-5">
-                {% csrf_token %}
-                {{ form.as_p }}
-            </div>
-            <div class="card-footer ">
-                <input class="btn btn-info" type="submit" name="submit" value="Hash">
-            </div>
-        </form>
+    <div class="card bg-light">
+        <div class="card-header p-4">
+            <h5>Text : {{ hash.text }}</h5>
+        </div>
+        <div class="card-body p-4">
+            <h5>Hash : {{ hash.hash }}</h5>
+        </div>
+        <div class="card-footer text-center ">
+            <a href="{% url 'home' %}" class="btn btn-info"> Back </a>
+        </div>
     </div>
 </body>
 
