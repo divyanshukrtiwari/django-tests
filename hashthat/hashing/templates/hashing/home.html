@@ -1,7 +1,29 @@
-Hello Django!
+<!DOCTYPE html>
+<html lang="en">
 
-<form action="{% url 'home' %}" method="POST" >
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" name="submit" value="Hash">
-</form>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Django!</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body class="container">
+    <div class="jumbotron bg-info">
+        <h2 class="text-center text-white">Hash Generator</h2>
+    </div>
+    <div class="card text-center border bg-light">
+        <form action="{% url 'home' %}" method="POST">
+            <div class="card-body p-5">
+                {% csrf_token %}
+                {{ form.as_p }}
+            </div>
+            <div class="card-footer ">
+                <input class="btn btn-info" type="submit" name="submit" value="Hash">
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
