@@ -2,6 +2,7 @@ from django.test import TestCase
 from selenium import webdriver
 from .forms import HashForm
 import hashlib
+import time
 
 from .models import Hash
 
@@ -19,6 +20,13 @@ class FunctionalTestCase(TestCase):
         text = self.browser.find_element_by_id('id_text')
         text.send_keys('hello')
         self.browser.find_element_by_name('submit').click()
+        self.assertIn('2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824', self.browser.page_source)
+
+    def test_hash_ajax(self):
+        self.browser.get('http://localhost:8000')
+        text = self.browser.find_element_by_id('id_text')
+        text.send_keys('hello')
+        time.sleep(2) #wait for ajax
         self.assertIn('2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824', self.browser.page_source)
 
     def tearDown(self):
